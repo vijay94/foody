@@ -23,7 +23,7 @@ public class SearchServiceTest {
 
     @Test
     public void search() {
-        GenericResponse response = this.searchService.getRestaurants("curry");
+        GenericResponse response = this.searchService.getRestaurants("Curry");
         LOGGER.info("Response Got => {}", new Gson().toJson(response));
         Assert.assertEquals(response.getStatusCode(), 200);
     }
