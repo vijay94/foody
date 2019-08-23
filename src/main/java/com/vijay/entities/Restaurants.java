@@ -1,88 +1,114 @@
 package com.vijay.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 
 @Table(name = "restaurants")
 @Entity
 public class Restaurants implements Serializable {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", insertable = false, nullable = false)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, nullable = false)
+    private Long id;
 
-  @Column(name = "restaurant_name", nullable = false)
-  private String restaurantName;
+    @Column(name = "restaurant_name", nullable = false)
+    private String restaurantName;
 
-  @Column(name = "cover_image")
-  private String coverImage;
+    @Column(name = "cover_image")
+    private String coverImage;
 
-  @Column(name = "cousine")
-  private String cousine;
+    @Column(name = "created_at")
+    private Date createdAt;
 
-  @Column(name = "created_at")
-  private Date createdAt;
+    @Column(name = "updated_at")
+    private Date updatedAt;
+//
+//    @OneToMany(mappedBy = "restaurants", cascade = CascadeType.ALL,
+//            orphanRemoval = true, fetch = FetchType.EAGER)
+//    List<Cousines> cousines;
 
-  @Column(name = "updated_at")
-  private Date updatedAt;
+    @OneToMany(targetEntity = Dishes.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "restaurant_id")
+    @Fetch(value = FetchMode.SUBSELECT)
+    List<Dishes> dishes;
 
-  public static long getSerialVersionUID() {
+    @OneToMany(targetEntity = Reviews.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "restaurant_id")
+    @Fetch(value = FetchMode.SUBSELECT)
+    List<Reviews> reviews;
+
+    public static long getSerialVersionUID() {
     return serialVersionUID;
-  }
+    }
 
-  public Long getId() {
+    public Long getId() {
     return id;
-  }
+    }
 
-  public void setId(Long id) {
+    public void setId(Long id) {
     this.id = id;
-  }
+    }
 
-  public String getRestaurantName() {
+    public String getRestaurantName() {
     return restaurantName;
-  }
+    }
 
-  public void setRestaurantName(String restaurantName) {
+    public void setRestaurantName(String restaurantName) {
     this.restaurantName = restaurantName;
-  }
+    }
 
-  public String getCoverImage() {
+    public String getCoverImage() {
     return coverImage;
-  }
+    }
 
-  public void setCoverImage(String coverImage) {
+    public void setCoverImage(String coverImage) {
     this.coverImage = coverImage;
-  }
+    }
 
-  public String getCousine() {
-    return cousine;
-  }
-
-  public void setCousine(String cousine) {
-    this.cousine = cousine;
-  }
-
-  public Date getCreatedAt() {
+    public Date getCreatedAt() {
     return createdAt;
-  }
+    }
 
-  public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt) {
     this.createdAt = createdAt;
-  }
+    }
 
-  public Date getUpdatedAt() {
+    public Date getUpdatedAt() {
     return updatedAt;
-  }
+    }
 
-  public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
     this.updatedAt = updatedAt;
-  }
+    }
+
+//    public List<Cousines> getCousines() {
+//        return cousines;
+//    }
+//
+//    public void setCousines(List<Cousines> cousines) {
+//        this.cousines = cousines;
+//    }
+
+    public List<Dishes> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dishes> dishes) {
+        this.dishes = dishes;
+    }
+
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
+    }
 }

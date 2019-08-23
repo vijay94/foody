@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1")
 public class SearchController {
 
     @Autowired
     SearchService searchService;
 
-    @GetMapping("restaurants")
+    @GetMapping(value = "/restaurants")
     public ResponseEntity<GenericResponse<Restaurant>> getRestaurants(@RequestParam(name = "term", required = true) String searchTerm, BindingResult bindingResult) throws InvalidRequestException {
 
         if (bindingResult.hasErrors())

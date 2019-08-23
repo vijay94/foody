@@ -2,6 +2,9 @@ package com.vijay.responses;
 
 import com.google.gson.Gson;
 import com.vijay.entities.Restaurants;
+import com.vijay.entities.Reviews;
+
+import java.util.List;
 
 public class Restaurant {
 
@@ -9,15 +12,18 @@ public class Restaurant {
 
     private long id;
 
-    private String cousine;
+    private List<Reviews> reviews;
 
     private String couverImage;
 
-    public Restaurant(Restaurants restaurant) {
+    private float average;
+
+    public Restaurant(Restaurants restaurant, Double average) {
         this.name = restaurant.getRestaurantName();
         this.id = restaurant.getId();
-        this.cousine = restaurant.getCousine();
+        this.reviews = restaurant.getReviews();
         this.couverImage = restaurant.getCoverImage();
+        this.average = average.floatValue();
     }
 
     public String getName() {
@@ -36,20 +42,20 @@ public class Restaurant {
         this.id = id;
     }
 
-    public String getCousine() {
-        return cousine;
-    }
-
-    public void setCousine(String cousine) {
-        this.cousine = cousine;
-    }
-
     public String getCouverImage() {
         return couverImage;
     }
 
     public void setCouverImage(String couverImage) {
         this.couverImage = couverImage;
+    }
+
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

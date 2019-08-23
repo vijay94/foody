@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface RestaurantsRepository extends JpaRepository<Restaurants, Long>, JpaSpecificationExecutor<Restaurants> {
 
-    @Query("select new com.vijay.responses.Restaurant(restaurant) from Restaurants restaurant where restaurant.restaurantName" +
-            " like :searchTerm or restaurant.cousine like :searchTerm")
+    @Query("select new com.vijay.responses.Restaurant(restaurant, AVG(reviews.reviewPoint)) from Restaurants restaurant " +
+            "inner join Reviews reviews on reviews.restaurantId = restaurant.id where restaurant.restaurantName" +
+            " like :searchTerm group by restaurant")
     List<Restaurant> search(@Param("searchTerm") String searchTerm);
 }
