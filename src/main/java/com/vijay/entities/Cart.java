@@ -1,13 +1,16 @@
 package com.vijay.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+@Table(name = "cart")
 @Entity
-@Table(name = "dishes")
-public class Dishes implements Serializable {
+public class Cart implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,23 +18,22 @@ public class Dishes implements Serializable {
     @Column(name = "id", insertable = false, nullable = false)
     private Long id;
 
-    @Column(name = "dish_name", nullable = false)
-    private String dishName;
+    @Column(name = "order_id")
+    private Long orderId;
 
-    @Column(name = "restaurant_id", nullable = false)
-    private Long restaurantId;
-
-    @Column(name = "incredients")
-    private String incredients;
-
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(name = "created_at")
     private Date createdAt;
 
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    @OneToMany(targetEntity = CartItems.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cart_id")
+    @Fetch(value = FetchMode.SUBSELECT)
+    List<CartItems> cartItems;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -45,28 +47,20 @@ public class Dishes implements Serializable {
         this.id = id;
     }
 
-    public String getDishName() {
-        return dishName;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public Long getRestaurantId() {
-        return restaurantId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setRestaurantId(Long restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-
-    public String getIncredients() {
-        return incredients;
-    }
-
-    public void setIncredients(String incredients) {
-        this.incredients = incredients;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Date getCreatedAt() {
@@ -85,11 +79,11 @@ public class Dishes implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Double getPrice() {
-        return price;
+    public List<CartItems> getCartItems() {
+        return cartItems;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setCartItems(List<CartItems> cartItems) {
+        this.cartItems = cartItems;
     }
 }

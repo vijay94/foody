@@ -2,12 +2,16 @@ package com.vijay.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "dishes")
-public class Dishes implements Serializable {
+@Table(name = "addresses")
+public class Addresses implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,17 +19,14 @@ public class Dishes implements Serializable {
     @Column(name = "id", insertable = false, nullable = false)
     private Long id;
 
-    @Column(name = "dish_name", nullable = false)
-    private String dishName;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @Column(name = "restaurant_id", nullable = false)
-    private Long restaurantId;
+    @Column(name = "address")
+    private String address;
 
-    @Column(name = "incredients")
-    private String incredients;
-
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "phone_no", nullable = false)
+    private Long phoneNo;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -45,28 +46,28 @@ public class Dishes implements Serializable {
         this.id = id;
     }
 
-    public String getDishName() {
-        return dishName;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getRestaurantId() {
-        return restaurantId;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRestaurantId(Long restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getIncredients() {
-        return incredients;
+    public Long getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setIncredients(String incredients) {
-        this.incredients = incredients;
+    public void setPhoneNo(Long phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public Date getCreatedAt() {
@@ -83,13 +84,5 @@ public class Dishes implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 }

@@ -2,12 +2,16 @@ package com.vijay.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "cart_items")
 @Entity
-@Table(name = "dishes")
-public class Dishes implements Serializable {
+public class CartItems implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,17 +19,17 @@ public class Dishes implements Serializable {
     @Column(name = "id", insertable = false, nullable = false)
     private Long id;
 
-    @Column(name = "dish_name", nullable = false)
-    private String dishName;
+    @Column(name = "dish_id", nullable = false)
+    private Long dishId;
 
-    @Column(name = "restaurant_id", nullable = false)
-    private Long restaurantId;
+    @Column(name = "cart_id", nullable = false)
+    private Long cartId;
 
-    @Column(name = "incredients")
-    private String incredients;
+    @Column(name = "quantity")
+    private Integer quantity = 1;
 
     @Column(name = "price")
-    private Double price;
+    private Double price = 0D;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -45,28 +49,28 @@ public class Dishes implements Serializable {
         this.id = id;
     }
 
-    public String getDishName() {
-        return dishName;
+    public Long getDishId() {
+        return dishId;
     }
 
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
+    public void setDishId(Long dishId) {
+        this.dishId = dishId;
     }
 
-    public Long getRestaurantId() {
-        return restaurantId;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setRestaurantId(Long restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public String getIncredients() {
-        return incredients;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setIncredients(String incredients) {
-        this.incredients = incredients;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Date getCreatedAt() {
@@ -85,11 +89,11 @@ public class Dishes implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Double getPrice() {
-        return price;
+    public Long getCartId() {
+        return cartId;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
     }
 }

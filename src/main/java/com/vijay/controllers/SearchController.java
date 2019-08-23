@@ -21,10 +21,8 @@ public class SearchController {
     SearchService searchService;
 
     @GetMapping(value = "/restaurants")
-    public ResponseEntity<GenericResponse<Restaurant>> getRestaurants(@RequestParam(name = "term", required = true) String searchTerm, BindingResult bindingResult) throws InvalidRequestException {
+    public ResponseEntity<GenericResponse<Restaurant>> getRestaurants(@RequestParam(name = "term", required = true) String searchTerm) {
 
-        if (bindingResult.hasErrors())
-            throw new InvalidRequestException(bindingResult);
 
         return new ResponseEntity(searchService.getRestaurants(searchTerm), HttpStatus.OK);
     }

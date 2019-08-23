@@ -17,6 +17,11 @@ public class GenericResponse<T> {
         this.data = data;
     }
 
+    public GenericResponse(int statusCode, String message) {
+        this.statusCode = statusCode;
+        this.message = message;
+    }
+
     public int getStatusCode() {
         return statusCode;
     }

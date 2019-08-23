@@ -18,7 +18,11 @@ public class Restaurant {
 
     private float average;
 
+    public Restaurant() {
+    }
+
     public Restaurant(Restaurants restaurant, Double average) {
+        this();
         this.name = restaurant.getRestaurantName();
         this.id = restaurant.getId();
         this.reviews = restaurant.getReviews();
