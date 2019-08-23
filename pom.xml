@@ -1,0 +1,179 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      <modelVersion>4.0.0</modelVersion>
+     
+      <groupId>com.creditmantri</groupId>
+      <artifactId>thought</artifactId>
+      <version>1.0</version>
+      <packaging>jar</packaging>
+     
+      <name>A simple CreditMantri µService</name>
+      
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.3.RELEASE</version>
+    <relativePath /> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+
+    
+    <!--<app.env>${app.env}</app.env>-->
+    <!--<app.registry>${app.registry}</app.registry>-->
+    <!--<dockerfile-maven-version>1.4.4</dockerfile-maven-version>-->
+    <!--<docker-registry-repo>${app.registry}</docker-registry-repo>-->
+    <maven.build.timestamp.format>yyyy_MM_dd_HH_mm</maven.build.timestamp.format>
+    
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-undertow</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+<!-- For RDBMS -->
+      <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.5</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>3.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+      <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>1.4.194</version>
+      </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    
+
+    <!--<plugin>-->
+        <!--<groupId>com.spotify</groupId>-->
+        <!--<artifactId>docker-maven-plugin</artifactId>-->
+        <!--<version>0.2.3</version>-->
+        <!--<configuration>-->
+          <!--<imageName>${project.build.finalName}</imageName>-->
+          <!--<dockerDirectory>src/main/docker</dockerDirectory>-->
+          <!--<resources>-->
+            <!--<resource>-->
+              <!--<targetPath>/</targetPath>-->
+              <!--<directory>${project.build.directory}</directory>-->
+              <!--<include>${project.build.finalName}.jar</include>-->
+            <!--</resource>-->
+          <!--</resources>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+      <!--<plugin>-->
+        <!--<groupId>com.spotify</groupId>-->
+        <!--<artifactId>dockerfile-maven-plugin</artifactId>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>build-image-latest</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+              <!--<goal>build</goal>-->
+              <!--<goal>push</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<tag>${project.build.finalName}-latest</tag>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+          <!--<execution>-->
+            <!--<id>build-image-timestamp</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+              <!--<goal>build</goal>-->
+              <!--<goal>push</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<tag>${project.build.finalName}-${project.version}-${maven.build.timestamp}</tag>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+        <!--<configuration>-->
+          <!--<repository>${docker-registry-repo}</repository>-->
+          <!--<tag>${project.build.finalName}-${project.version}-${maven.build.timestamp}</tag>-->
+          <!--<buildArgs>-->
+            <!--<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>-->
+          <!--</buildArgs>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      </plugins>
+  </build>
+
+     
+</project>
