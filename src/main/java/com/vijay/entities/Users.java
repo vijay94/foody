@@ -1,77 +1,105 @@
 package com.vijay.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Table(name = "users")
 @Entity
 public class Users implements Serializable {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", insertable = false, nullable = false)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, nullable = false)
+    private Long id;
 
-  @Column(name = "first_name", nullable = false)
-  private String firstName;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-  @Column(name = "last_name")
-  private String lastName;
+    @Column(name = "last_name")
+    private String lastName;
 
-  @Column(name = "created_at")
-  private Date createdAt;
+    @Column(name = "email")
+    private String email;
 
-  @Column(name = "updated_at")
-  private Date updatedAt;
+    @Column(name = "password")
+    private String password;
 
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
+    @Column(name = "prefered_payment_mode")
+    private String preferedPaymentMode;
 
-  public Long getId() {
-    return id;
-  }
+    @Column(name = "created_at", insertable = false)
+    private Date createdAt;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private Date updatedAt;
 
-  public String getFirstName() {
-    return firstName;
-  }
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public String getLastName() {
-    return lastName;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+    public String getFirstName() {
+        return firstName;
+    }
 
-  public Date getCreatedAt() {
-    return createdAt;
-  }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
+    public String getLastName() {
+        return lastName;
+    }
 
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getPreferedPaymentMode() {
+        return preferedPaymentMode;
+    }
+
+    public void setPreferedPaymentMode(String preferedPaymentMode) {
+        this.preferedPaymentMode = preferedPaymentMode;
+    }
 }

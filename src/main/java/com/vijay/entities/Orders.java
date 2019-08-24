@@ -1,13 +1,8 @@
 package com.vijay.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "orders")
@@ -40,10 +35,10 @@ public class Orders implements Serializable {
     @Column(name = "payment_mode")
     private String paymentMode;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false)
     private Date createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", insertable = false, updatable = false)
     private Date updatedAt;
 
 

@@ -3,10 +3,10 @@ package com.vijay.entities;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.*;
 
 @Table(name = "cart")
 @Entity
@@ -24,10 +24,10 @@ public class Cart implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false)
     private Date createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", insertable = false)
     private Date updatedAt;
 
     @OneToMany(targetEntity = CartItems.class, fetch = FetchType.EAGER)

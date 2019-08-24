@@ -2,7 +2,7 @@ package com.vijay.services;
 
 import com.google.gson.Gson;
 import com.vijay.responses.GenericResponse;
-import com.vijay.service.SearchService;
+import com.vijay.service.discovery.SearchService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

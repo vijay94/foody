@@ -4,7 +4,6 @@ import javax.validation.constraints.NotEmpty;
 
 public class PlaceOrderRequest {
 
-    @NotEmpty
     private long cartId;
 
     @NotEmpty
@@ -12,6 +11,8 @@ public class PlaceOrderRequest {
 
     @NotEmpty
     private String paymentMode;
+
+    private boolean isPreferedPaymentMode;
 
     public long getCartId() {
         return cartId;
@@ -35,5 +36,13 @@ public class PlaceOrderRequest {
 
     public void setPaymentMode(String paymentMode) {
         this.paymentMode = paymentMode;
+    }
+
+    public boolean isPreferedPaymentMode() {
+        return isPreferedPaymentMode;
+    }
+
+    public void setPreferedPaymentMode(boolean preferedPaymentMode) {
+        isPreferedPaymentMode = preferedPaymentMode;
     }
 }

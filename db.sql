@@ -107,3 +107,9 @@ alter table dishes add column price DOUBLE DEFAULT 0.0;
 alter table cart_items add COLUMN cart_id BIGINT not NULL,
 add FOREIGN KEY `fk_cart_items_cart_id` (cart_id) REFERENCES cart(id);
 
+alter table users add column email VARCHAR(255) not null UNIQUE,
+add COLUMN password VARCHAR(1000) not null;
+
+alter table addresses CHANGE COLUMN phone_no BIGINT default null;
+
+alter table users ADD COLUMN prefered_payment_mode VARCHAR(50) default null;

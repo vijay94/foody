@@ -1,13 +1,8 @@
 package com.vijay.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "addresses")
@@ -25,13 +20,13 @@ public class Addresses implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "phone_no", nullable = false)
+    @Column(name = "phone_no")
     private Long phoneNo;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false)
     private Date createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", insertable = false, updatable = false)
     private Date updatedAt;
 
     public static long getSerialVersionUID() {
