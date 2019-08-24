@@ -1,7 +1,6 @@
 package com.vijay.requests;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 public class AddCartItemRequest {
 

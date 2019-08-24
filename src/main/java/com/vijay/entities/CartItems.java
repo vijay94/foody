@@ -1,13 +1,8 @@
 package com.vijay.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Table(name = "cart_items")
 @Entity
@@ -31,10 +26,10 @@ public class CartItems implements Serializable {
     @Column(name = "price")
     private Double price = 0D;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false)
     private Date createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", updatable = false, insertable = false)
     private Date updatedAt;
 
     public static long getSerialVersionUID() {

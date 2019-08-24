@@ -1,4 +1,4 @@
-package com.vijay.service;
+package com.vijay.service.discovery;
 
 import com.vijay.repositories.RestaurantsRepository;
 import com.vijay.responses.GenericResponse;

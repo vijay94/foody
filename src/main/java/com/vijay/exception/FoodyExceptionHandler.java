@@ -15,4 +15,9 @@ public class FoodyExceptionHandler {
         return new ResponseEntity<>(new GenericResponse<>(400, new Errors(exception.getBindingResult()), exception.getMessage()), null , HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UnAuthorizedException.class)
+    protected ResponseEntity unAuthorizedUser(UnAuthorizedException exception){
+        return new ResponseEntity<>(new GenericResponse<>(401, new Errors(exception.getMessage()), exception.getMessage()), null , HttpStatus.UNAUTHORIZED);
+    }
+
 }

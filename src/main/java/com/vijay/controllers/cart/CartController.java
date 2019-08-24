@@ -19,17 +19,17 @@ public class CartController {
     CartService cartService;
 
     @GetMapping(value = "/cart")
-    public ResponseEntity<GenericResponse<Restaurant>> getCartItem(@RequestParam("cartId") long cartId) {
+    public ResponseEntity<GenericResponse<Restaurant>> getCartItem(@RequestAttribute("userId") String userId) {
 
-        return new ResponseEntity(cartService.getCart(cartId), HttpStatus.OK);
+        return new ResponseEntity(cartService.getCart(Long.parseLong(userId)), HttpStatus.OK);
     }
 
     @PostMapping(value = "/cart")
-    public ResponseEntity<GenericResponse<Restaurant>> addCartItem(@RequestBody AddCartItemRequest addCartItemRequest, BindingResult bindingResult) throws InvalidRequestException {
+    public ResponseEntity<GenericResponse<Restaurant>> addCartItem(@RequestAttribute("userId") String userId, @RequestBody AddCartItemRequest addCartItemRequest, BindingResult bindingResult) throws InvalidRequestException {
 
         if (bindingResult.hasErrors())
             throw new InvalidRequestException(bindingResult);
 
-        return new ResponseEntity(cartService.addItemToCart(addCartItemRequest), HttpStatus.OK);
+        return new ResponseEntity(cartService.addItemToCart(Long.parseLong(userId), addCartItemRequest), HttpStatus.OK);
     }
 }
